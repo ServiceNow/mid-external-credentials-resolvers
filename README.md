@@ -1,2 +1,2 @@
 # mid-thycotic-external-credentials-resolver
-MID Server Thycotic external credentials resolver source code
+MID Server External Credential Resolver for Thycotic Secret Server.
