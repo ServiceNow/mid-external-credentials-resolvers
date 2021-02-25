@@ -47,6 +47,11 @@ public class ThycoticCredentialResolver {
 	// the string private key for the credential, if needed...
 	public static final String VAL_PKEY = "pkey";
 	
+	
+	public static final String THYCOTIC_URL_PROPERTY = "mid.ext.cred.thycotic.url";
+	public static final String THYCOTIC_USERNAME_PROPERTY = "mid.ext.cred.thycotic.username";
+	public static final String THYCOTIC_PASSWORD_PROPERTY = "mid.ext.cred.thycotic.password";
+	
 	//These can be retrieved from parameters provided in config.xml file under MID agent folder 
 	// or provide hard-coded values here itself.
 	private String thycotic_url = "";
@@ -60,17 +65,17 @@ public class ThycoticCredentialResolver {
 	//Method to load properties from config,xml
 	private void loadProps() {
 		//Load parameters from MID config.xml.
-		thycotic_url = Config.get().getProperty("mid.external_credentials.vault.address");
+		thycotic_url = Config.get().getProperty(THYCOTIC_URL_PROPERTY);
 		if(isNullOrEmpty(thycotic_url))
-			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver mid.external_credentials.vault.address not set!");
+			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver " + THYCOTIC_URL_PROPERTY + " not set!");
 
-		thycotic_username = Config.get().getProperty("mid.external_credentials.vault.username");
+		thycotic_username = Config.get().getProperty(THYCOTIC_USERNAME_PROPERTY);
 		if(isNullOrEmpty(thycotic_username))
-			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver mid.external_credentials.vault.username not set!");
+			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver " + THYCOTIC_USERNAME_PROPERTY + " not set!");
 
-		thycotic_password = Config.get().getProperty("mid.external_credentials.vault.password");
+		thycotic_password = Config.get().getProperty(THYCOTIC_PASSWORD_PROPERTY);
 		if(isNullOrEmpty(thycotic_password))
-			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver mid.external_credentials.vault.password not set!");
+			throw new RuntimeException("[Vault] INFO - ThycoticCredentialResolver " + THYCOTIC_PASSWORD_PROPERTY + " not set!");
 	}
 
 	/**
@@ -225,12 +230,12 @@ public class ThycoticCredentialResolver {
 		try {
 			ThycoticCredentialResolver credResolver = new ThycoticCredentialResolver();
 			// credResolver.loadProps();
-			credResolver.thycotic_url = "https://sjc4wsecsvrt01.corp.service-now.com/SecretServer";
-			credResolver.thycotic_username = "service-now\\svc_thysecsurf";
-			credResolver.thycotic_password = "4et$@ZL6<xWA9z2F";
+			credResolver.thycotic_url = "https://thycotic.server.com/SecretServer";
+			credResolver.thycotic_username = "thycotic_user";
+			credResolver.thycotic_password = "thycotic_password";
 			
 			Map<String, String> map = new HashMap<>();
-			map.put(ARG_ID, "testsecret");
+			map.put(ARG_ID, "testcredid");
 			map.put(ARG_TYPE, "windows");
 			
 			Map<String, String> result = credResolver.resolve(map);
