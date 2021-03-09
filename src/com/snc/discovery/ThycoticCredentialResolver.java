@@ -221,7 +221,7 @@ public class ThycoticCredentialResolver {
 	 * Return the API version supported by this class.
 	 */
 	public String getVersion() {
-		return "1.0";
+		return "2.0";
 	}
 
 	// main method to test Thycotic server APIs.
