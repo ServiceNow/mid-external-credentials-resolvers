@@ -22,16 +22,16 @@ Eclipse or any equivalent IDE
 
 * Make sure that “External Credential Storage” plugin (com.snc.discovery.external_credentials) is installed in your ServiceNow instance.
 * Import the thycotic-external-credentials-0.0.1-SNAPSHOT.jar file from target folder in ServiceNow instance.
-	a. Navigate to MID Server – JAR Files
-	b. Create a New Record by clicking New
-	c. Name it “ThycoticCredentialResolver”, version 0.0.1 and attach thycotic-external-credentials-0.0.1-SNAPSHOT.jar from target folder.
-	d. Click Submit
+	- Navigate to MID Server – JAR Files
+	- Create a New Record by clicking New
+	- Name it “ThycoticCredentialResolver”, version 0.0.1 and attach thycotic-external-credentials-0.0.1-SNAPSHOT.jar from target folder.
+	- Click Submit
 * Create Credential in the instance with "External credential store" flag activated.
 * Update the config.xml in MID Server with below parameters and restart the MID Server.
 
-	<parameter name="mid.ext.cred.thycotic.url" value="<Thycotic Secret Server URL>"/> 
-	<parameter name="mid.ext.cred.thycotic.username" value="<Thycotic login username>"/>
-	<parameter name="mid.ext.cred.thycotic.password" secure="true" value="<Thycotic login password>"/>
+   <parameter name="ext.cred.thycotic.url" value="<Thycotic Secret Server URL>"/> 
+   <parameter name="ext.cred.thycotic.username" value="<Thycotic login username>"/>
+   <parameter name="ext.cred.thycotic.password" secure="true" value="<Thycotic login password>"/>
 
 * Ensure that the "Credential ID" match a Secret Name in your Thycotic Secret Server (ex: mysecretname)
 * Ensure that the Secret in the secret server contain keys matching the ServiceNow credential record fields (ex: username, password)
